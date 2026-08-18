@@ -1,0 +1,300 @@
+/* ============================================================
+   Thrive TRM Design System — Phoenix (MUI 2.0) token layer
+   Reskin of the app onto the MUI Thrive Phoenix Design System.
+   Same variable NAMES as before (nothing in the JSX changes) —
+   values now carry Phoenix/Material semantics:
+     • Primary  Indigo  #4758EB
+     • Secondary Peach   #FCB782
+     • Type      Roboto (Material scale)
+     • Text      alpha-on-black (.87 / .60 / .38)
+     • Cards     16px radius + distinctive Phoenix floating shadow
+     • Elevation MUI dp shadow stack
+   ============================================================ */
+
+/* Roboto (Phoenix type) + Roboto Mono for data cells / code */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+  /* --------------------------------------------------------
+     RAW BRAND PALETTE — Phoenix indigo (#4758EB primary = 600)
+     -------------------------------------------------------- */
+  --color-brand-25:  rgb(246 247 254);
+  --color-brand-50:  rgb(237 239 253);   /* tinted surface / lavender wash */
+  --color-brand-100: rgb(220 223 251);
+  --color-brand-200: rgb(187 193 247);
+  --color-brand-300: rgb(151 160 242);
+  --color-brand-400: rgb(138 150 240);
+  --color-brand-500: rgb(102 117 238);   /* brand border */
+  --color-brand-600: rgb(71 88 235);     /* PRIMARY — primary.main #4758EB */
+  --color-brand-700: rgb(8 91 232);      /* primary.dark-3 (hover) */
+  --color-brand-800: rgb(15 28 138);     /* primary.dark #0F1C8A */
+  --color-brand-900: rgb(15 28 138);
+  --color-brand-950: rgb(11 21 104);
+
+  /* Phoenix secondary — peach (used sparingly for accent fills) */
+  --color-peach-100: rgb(254 236 220);
+  --color-peach-300: rgb(252 200 152);
+  --color-peach-500: rgb(252 183 130);   /* #FCB782 */
+  --color-peach-700: rgb(226 141 74);
+
+  /* --------------------------------------------------------
+     NEUTRAL GRAY — MUI grey ramp
+     -------------------------------------------------------- */
+  --color-gray-25:  rgb(250 250 250);
+  --color-gray-50:  rgb(250 250 250);
+  --color-gray-100: rgb(245 245 245);
+  --color-gray-200: rgb(238 238 238);
+  --color-gray-300: rgb(224 224 224);   /* MUI divider-ish / #E0E0E0 */
+  --color-gray-400: rgb(189 189 189);
+  --color-gray-500: rgb(158 158 158);
+  --color-gray-600: rgb(117 117 117);
+  --color-gray-700: rgb(97 97 97);
+  --color-gray-800: rgb(66 66 66);
+  --color-gray-900: rgb(33 33 33);
+  --color-gray-950: rgb(18 18 18);
+
+  /* --------------------------------------------------------
+     SEMANTIC PALETTES — MUI error / warning / success
+     -------------------------------------------------------- */
+  /* Phoenix error — deeper red than MUI default (error.main #A41928) */
+  --color-error-50:  rgb(253 237 237);
+  --color-error-100: rgb(250 219 216);
+  --color-error-300: rgb(239 154 154);
+  --color-error-500: rgb(208 32 51);     /* error.light */
+  --color-error-600: rgb(164 25 40);     /* error.main */
+  --color-error-700: rgb(119 18 29);     /* error.dark */
+
+  /* Phoenix warning — amber (warning.main #FAAD14) */
+  --color-warning-50:  rgb(255 244 229);
+  --color-warning-100: rgb(255 224 178);
+  --color-warning-300: rgb(255 183 77);
+  --color-warning-500: rgb(251 191 70);  /* warning.light */
+  --color-warning-600: rgb(250 173 20);  /* warning.main */
+  --color-warning-700: rgb(215 144 5);   /* warning.dark */
+
+  /* Phoenix success — deep green (success.main #2E7623) */
+  --color-success-50:  rgb(237 247 237);
+  --color-success-100: rgb(200 230 201);
+  --color-success-300: rgb(129 199 132);
+  --color-success-500: rgb(76 175 80);   /* success.light */
+  --color-success-600: rgb(46 118 35);   /* success.main */
+  --color-success-700: rgb(31 79 23);    /* success.dark */
+
+  /* --------------------------------------------------------
+     SEMANTIC TOKENS — text (Phoenix alpha-on-black)
+     -------------------------------------------------------- */
+  --fg-primary:        rgba(0, 0, 0, 0.87);
+  --fg-secondary:      rgba(0, 0, 0, 0.60);
+  --fg-tertiary:       rgba(0, 0, 0, 0.60);
+  --fg-quaternary:     rgba(0, 0, 0, 0.38);
+  --fg-disabled:       rgba(0, 0, 0, 0.38);
+  --fg-placeholder:    rgba(0, 0, 0, 0.38);
+  --fg-on-brand:       #ffffff;
+  --fg-brand-primary:  var(--color-brand-900);
+  --fg-brand-secondary:var(--color-brand-700);
+  --fg-brand-tertiary: var(--color-brand-600);
+  --fg-error:          var(--color-error-600);
+  --fg-success:        var(--color-success-600);
+  --fg-warning:        var(--color-warning-600);
+
+  /* --------------------------------------------------------
+     SEMANTIC TOKENS — background
+     -------------------------------------------------------- */
+  --bg-primary:           #ffffff;
+  --bg-primary-hover:      rgba(0, 0, 0, 0.04);   /* MUI hover overlay */
+  --bg-secondary:         var(--color-gray-50);
+  --bg-secondary-hover:   var(--color-gray-100);
+  --bg-tertiary:          var(--color-gray-100);
+  --bg-quaternary:        var(--color-gray-200);
+  --bg-active:            rgba(0, 0, 0, 0.08);     /* MUI selected overlay */
+  --bg-disabled:          rgba(0, 0, 0, 0.12);
+  --bg-overlay:           var(--color-gray-950);
+
+  --bg-brand-primary:     var(--color-brand-50);   /* lavender tint / panel wash */
+  --bg-brand-secondary:   var(--color-brand-100);  /* hover tint */
+  --bg-brand-solid:       var(--color-brand-600);  /* primary CTA */
+  --bg-brand-solid-hover: var(--color-brand-700);
+  --bg-brand-section:     var(--color-brand-800);
+
+  --bg-error-primary:   var(--color-error-50);
+  --bg-error-solid:     var(--color-error-600);
+  --bg-success-primary: var(--color-success-50);
+  --bg-success-solid:   var(--color-success-600);
+  --bg-warning-primary: var(--color-warning-50);
+  --bg-warning-solid:   var(--color-warning-600);
+
+  /* --------------------------------------------------------
+     SEMANTIC TOKENS — border (Phoenix 1px divider @ .12,
+     input outline @ .23)
+     -------------------------------------------------------- */
+  --border-primary:        rgba(0, 0, 0, 0.23);
+  --border-secondary:      rgba(0, 0, 0, 0.12);
+  --border-tertiary:       rgba(0, 0, 0, 0.08);
+  --border-disabled:       rgba(0, 0, 0, 0.12);
+  --border-brand:          var(--color-brand-600);
+  --border-brand-solid:    var(--color-brand-600);
+  --border-error:          var(--color-error-500);
+  --border-error-solid:    var(--color-error-600);
+
+  /* --------------------------------------------------------
+     SHADOWS — MUI dp elevation stack + Phoenix card shadow
+     -------------------------------------------------------- */
+  /* subtle rest state (inputs, cards at rest) — light MUI lift */
+  --shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.08);
+  /* MUI elevation 1 */
+  --shadow-sm: 0px 2px 1px -1px rgba(0,0,0,0.20), 0px 1px 1px rgba(0,0,0,0.14), 0px 1px 3px rgba(0,0,0,0.12);
+  /* THE distinctive Phoenix card shadow (floating sheet) — used on hover */
+  --shadow-md: 0 -2px 3px -1px rgba(0,0,0,.10), 0 1px 1px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.12), 0 4px 4px rgba(0,0,0,.25);
+  /* MUI elevation 8 — menus / popovers */
+  --shadow-lg: 0px 5px 5px -3px rgba(0,0,0,0.20), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
+  /* MUI elevation 12 */
+  --shadow-xl: 0px 7px 8px -4px rgba(0,0,0,0.20), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12);
+  /* MUI elevation 16 — dialogs */
+  --shadow-2xl: 0px 8px 10px -5px rgba(0,0,0,0.20), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12);
+  /* MUI elevation 24 */
+  --shadow-3xl: 0px 11px 15px -7px rgba(0,0,0,0.20), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12);
+  /* buttons at rest — MUI elevation 2 */
+  --shadow-skeu: 0px 3px 1px -2px rgba(0,0,0,0.20), 0px 2px 2px rgba(0,0,0,0.14), 0px 1px 5px rgba(0,0,0,0.12);
+  --shadow-focus-ring: 0 0 0 3px rgba(71, 88, 235, 0.24);
+  --shadow-focus-ring-error: 0 0 0 3px rgba(164, 25, 40, 0.24);
+
+  /* --------------------------------------------------------
+     RADII — Phoenix: card 16, input/button 8, base 4
+     -------------------------------------------------------- */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 4px;     /* base / micro-elements */
+  --radius-lg: 8px;     /* default — buttons, inputs */
+  --radius-xl: 12px;
+  --radius-2xl: 16px;   /* cards */
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+
+  /* --------------------------------------------------------
+     SPACING (8px grid — Phoenix)
+     -------------------------------------------------------- */
+  --space-0: 0;
+  --space-0-5: 2px;
+  --space-1: 4px;
+  --space-1-5: 6px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* --------------------------------------------------------
+     TYPOGRAPHY — families (Roboto — Phoenix / Material)
+     -------------------------------------------------------- */
+  --font-body: 'Roboto', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Roboto', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* --------------------------------------------------------
+     TYPOGRAPHY — scale (MUI type scale)
+     body = 16/1.5 (Roboto 400)
+     -------------------------------------------------------- */
+  --text-xs:        12px; --text-xs-lh:  18px;
+  --text-sm:        14px; --text-sm-lh:  20px;
+  --text-md:        16px; --text-md-lh:  24px;
+  --text-lg:        18px; --text-lg-lh:  28px;
+  --text-xl:        20px; --text-xl-lh:  30px;
+
+  --display-xs:     24px; --display-xs-lh: 32px;
+  --display-sm:     30px; --display-sm-lh: 38px;  --display-sm-tracking: -0.25px;
+  --display-md:     36px; --display-md-lh: 44px;  --display-md-tracking: -0.5px;
+  --display-lg:     48px; --display-lg-lh: 60px;  --display-lg-tracking: -0.75px;
+  --display-xl:     60px; --display-xl-lh: 72px;  --display-xl-tracking: -1.0px;
+  --display-2xl:    72px; --display-2xl-lh: 90px; --display-2xl-tracking: -1.5px;
+
+  /* Roboto weights — 300 / 400 / 500 / 700 (no 600 in Roboto; 600 snaps to 500/700) */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 500;
+  --weight-bold:    700;
+}
+
+/* ============================================================
+   ELEMENT-LEVEL DEFAULTS
+   ============================================================ */
+html, body {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--text-md-lh);
+  color: var(--fg-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--color-brand-600); text-decoration: none; }
+a:hover { color: var(--color-brand-700); text-decoration: underline; }
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--display-md);
+  line-height: var(--display-md-lh);
+  letter-spacing: var(--display-md-tracking);
+  font-weight: 300;
+  color: var(--fg-primary);
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--display-sm);
+  line-height: var(--display-sm-lh);
+  letter-spacing: var(--display-sm-tracking);
+  font-weight: 400;
+  color: var(--fg-primary);
+}
+h3, .h3 {
+  font-size: var(--display-xs);
+  line-height: var(--display-xs-lh);
+  font-weight: 500;
+  color: var(--fg-primary);
+}
+h4, .h4 {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl-lh);
+  font-weight: 500;
+  color: var(--fg-primary);
+}
+h5, .h5 {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg-lh);
+  font-weight: 500;
+  color: var(--fg-primary);
+}
+
+p, .body {
+  font-size: var(--text-md);
+  line-height: var(--text-md-lh);
+  color: var(--fg-secondary);
+}
+.body-sm { font-size: var(--text-sm); line-height: var(--text-sm-lh); color: var(--fg-secondary); }
+.body-xs { font-size: var(--text-xs); line-height: var(--text-xs-lh); color: var(--fg-tertiary); }
+
+.label {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm-lh);
+  font-weight: 500;
+  color: var(--fg-secondary);
+}
+
+code, .code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.eyebrow {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm-lh);
+  font-weight: 500;
+  color: var(--fg-brand-tertiary);
+}

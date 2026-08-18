@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+
+# Archives / exports (not part of the prototype)
+*.zip
+
+# Large / working assets not referenced by the app
+uploads/
+scraps/
+_ds/
+
+# Editor
+.vscode/
+.idea/
